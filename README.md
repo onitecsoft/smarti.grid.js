@@ -19,20 +19,22 @@ Structure:
 ```html
 <div ...> - container
   <table>
-    <thead>
+    <thead> - header
       <tr>
         <th ...>...</th>
         <th ...>...</th>
       </tr>
     </thead>
-    <tbody>
+    <tbody> - body template
       <tr ...>
         <td ...>...</td>
         <td ...>...</td>
       </tr>
     </tbody>
-    <tfoot>
+    <tfoot> - footer
       <tr>
+        <td ...>...</td>
+        <td ...>...</td>
       </tr>
     </tfoot>
   </table>
