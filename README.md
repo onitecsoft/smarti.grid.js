@@ -26,10 +26,10 @@ Structure:
       </tr>
     </thead>
     <tbody> - body template
-      <tr data-group-header="0" data-group-field="...">
+      <tr data-group-header="0" data-group-field="..."> - group header template (level=0)
         ...
       </tr>
-      <tr data-group-footer="0">
+      <tr data-group-footer="0"> - group footer template (level=0)
         ...
       </tr>
       <tr ...>
