@@ -68,8 +68,9 @@ attribute name | description
 --- | ---
 data-sort-field="..." | sorting field name
 data-sort="asc \| desc" | initial sorting
-data-aggregate="sum \| count \| min \| max \| avg \| first \| last \| value" | 
-data-method="true" | 
+data-aggregate="sum \| count \| min \| max \| avg \| first \| last \| value" | aggregate function (inner html is used as formatting pattern)
+data-field="..." | field name used in aggregate function
+data-method="true" | custom content function defined inside of element (example: function(e) { return e.count() }). Argument contain aggregate functions
 data-select="true" |
 
 <b>Body template</b>
