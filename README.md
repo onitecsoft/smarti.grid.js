@@ -21,10 +21,14 @@ Structure:
   <table>
     <thead>
       <tr>
+        <th ...>...</th>
+        <th ...>...</th>
       </tr>
     </thead>
     <tbody>
-      <tr>
+      <tr ...>
+        <td ...>...</td>
+        <td ...>...</td>
       </tr>
     </tbody>
     <tfoot>
