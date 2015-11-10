@@ -1,4 +1,11 @@
 # smarti.grid.js
 
-JQuery grid (sorting, grouping, scrolling, selection, aggregates)
-Native template configuration
+JQuery grid
+
+* Sorting
+* Scrolling
+* Selecting
+* Grouping
+* Aggregates
+* Native configuration and templates
+* Ability to apply custom layout, css or theme
