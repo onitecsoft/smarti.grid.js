@@ -68,6 +68,15 @@ attribute name | description
 --- | ---
 data-sort-field="..." | sorting field name
 data-sort="asc \| desc" | initial sorting
-data-aggregate="..." | 
-data-method="..." | 
-data-select="..." |
+data-aggregate="sum \| count \| min \| max \| avg \| first \| last \| value" | 
+data-method="true" | 
+data-select="true" |
+
+<b>Body template</b>
+
+attribute name | description
+--- | ---
+data-attr="function(e){ ... }" |
+data-select="true" |
+data-field="..." |
+data-method="true" |
