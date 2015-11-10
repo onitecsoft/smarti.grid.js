@@ -47,11 +47,11 @@
 </div>
 ```
 <b>Container:</b>
-```
-| attribute name | description |
-| --- | --- |
-| data-name="..." | name of javascript instance |
-| data-smarti="grid" | type of javascript instance (smarti.grid) |
-| data-data="..." | json data (plain json or javascript variable name) |
-| data-selectable="single|multiple" | defines if grid is selectable |
-```
+
+attribute name | description
+--- | ---
+data-name="..." | name of javascript instance
+data-smarti="grid" | type of javascript instance (smarti.grid)
+data-data="..." | json data (plain json or javascript variable name)
+data-selectable="single|multiple" | defines if grid is selectable
+
