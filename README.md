@@ -13,4 +13,14 @@ JQuery grid
 * Native javascript methods for custom content
 * Data formatting with smarti.to.js
 
-Dependency: smarti.to.js
+Dependency: <a href="https://github.com/onitecsoft/smarti.to.js">smarti.to.js</a>
+
+Structure:
+```html
+<div ...> - container
+  <table>
+    <thead>
+    </thead>
+  </table>
+</div>
+```
