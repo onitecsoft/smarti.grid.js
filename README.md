@@ -60,4 +60,4 @@ data-select-class="..." | defines css class for selected row
 data-scrollable="true \| false" | defines if grid is scrollable (default: false)
 data-on-init="function(e){ ... }" | fires when grid is initilized<ul><li>e.sender - current grid js instance</li></ul>
 data-on-load="function(e){ ... }" | fires when data is rendered<ul><li>e.sender - current grid js instance</li></ul>
-data-on-select="function(e){ ... }" | fires when user changes selectionul><li>e.sender - current grid js instance</li><li>e.tr - jquery row object</li><li>e.selected - shows if current row is selected</li><li>e.item - current row data item</li></ul>
+data-on-select="function(e){ ... }" | fires when user changes selection<ul><li>e.sender - current grid js instance</li><li>e.tr - jquery row object</li><li>e.selected - shows if current row is selected</li><li>e.item - current row data item</li></ul>
