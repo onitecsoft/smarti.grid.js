@@ -1,6 +1,6 @@
 # smarti.grid.js
 
-JQuery grid
+<b>JQuery grid</b>
 
 * Sorting (custom sorting field)
 * Scrolling (autowidth columns ability)
@@ -13,9 +13,9 @@ JQuery grid
 * Native javascript methods for custom content
 * Data formatting with smarti.to.js
 
-Dependency: <a href="https://github.com/onitecsoft/smarti.to.js">smarti.to.js</a>
+<b>Dependency:</b> <a href="https://github.com/onitecsoft/smarti.to.js">smarti.to.js</a>
 
-Structure:
+<b>Structure:</b>
 ```html
 <div ...> - container
   <table>
@@ -45,4 +45,11 @@ Structure:
     </tfoot>
   </table>
 </div>
+```
+<b>Container attributes:</b>
+```
+data-name="..." | name of javascript instance
+data-smarti="grid" | type of javascript instance (smarti.grid)
+data-data="..." | json data (plain json or javascript variable name)
+data-selectable="single|multiple" | defines if grid is selectable
 ```
