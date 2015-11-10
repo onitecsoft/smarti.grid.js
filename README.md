@@ -53,5 +53,9 @@ attribute name | description
 data-name="..." | name of javascript instance
 data-smarti="grid" | type of javascript instance (smarti.grid)
 data-data="..." | json data (plain json or javascript variable name)
-data-selectable="single\|multiple" | defines if grid is selectable
-
+data-selectable="true \| false \| multiple" | defines if grid is selectable (default: false)
+data-select-class="..." | defines css class for selected row
+data-scrollable="true \| false" | defines if grid is scrollable (default: false)
+data-on-init="function(e){ ... }" |
+data-on-load="function(e){ ... }" |
+data-on-select="function(e){ ... }" |
