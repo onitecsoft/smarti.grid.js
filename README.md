@@ -71,13 +71,13 @@ data-sort="asc \| desc" | initial sorting
 data-aggregate="sum \| count \| min \| max \| avg \| first \| last \| value" | aggregate function (inner html is used as formatting pattern)
 data-field="..." | field name used in aggregate function
 data-method="true" | custom content function defined inside of element (example: function(e) { return e.count() }). Argument contain aggregate functions
-data-select="true" |
+data-select="true" | "select all" checkbox
 
 <b>Body template</b>
 
 attribute name | description
 --- | ---
-data-attr="function(e){ ... }" |
-data-select="true" |
-data-field="..." |
-data-method="true" |
+data-attr="function(e){ ... }" | custom attributes function (example: function(e) { if(e.ID==1) return {style:'color:red'} }). Argument contain current row data item
+data-select="true" | "select" checkbox
+data-field="..." | bound field name
+data-method="true" | custom content function defined inside of element (example: function(e) { return e.ID }). Argument contain current row data item
