@@ -58,9 +58,10 @@ data-data="..." | json data (plain json or js variable name)
 data-selectable="true \| false \| multiple" | defines if grid is selectable (default: false)
 data-select-class="..." | defines css class for selected row
 data-scrollable="true \| false" | defines if grid is scrollable (default: false)
-data-on-init="function(e){ ... }" | event handler after grid initilization\arguments:
+data-on-init="function(e){ ... }" | event handler after grid initilization<br>
+arguments:
 * e.sender - current grid js instance
-data-on-load="function(e){ ... }" | event handler after data is rendered\
+data-on-load="function(e){ ... }" | event handler after data is rendered<br>
 arguments:
 * e.sender - current grid js instance
 data-on-select="function(e){ ... }" |
