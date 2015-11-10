@@ -20,7 +20,17 @@ Structure:
 <div ...> - container
   <table>
     <thead>
+      <tr>
+      </tr>
     </thead>
+    <tbody>
+      <tr>
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr>
+      </tr>
+    </tfoot>
   </table>
 </div>
 ```
