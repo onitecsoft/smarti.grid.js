@@ -8,4 +8,8 @@ JQuery grid
 * Grouping
 * Aggregates
 * Native configuration and templates
-* Ability to apply custom layout, css or theme
+* Ability to apply custom layout, css style or theme
+* Custom html attributes depended on data
+* Data formatting with smarti.to.js
+
+Dependency: smarti.to.js
