@@ -26,6 +26,12 @@ Structure:
       </tr>
     </thead>
     <tbody> - body template
+      <tr data-group-header="0" data-group-field="...">
+        ...
+      </tr>
+      <tr data-group-footer="0">
+        ...
+      </tr>
       <tr ...>
         <td ...>...</td>
         <td ...>...</td>
