@@ -77,7 +77,7 @@ data-select="true" | "select all" checkbox
 
 attribute name | description
 --- | ---
-<div nowrap>data-attr="function(e){ ... }"</div> | custom attribute function (example: function(e) { if(e.ID==1) return {style:'color:red'} }). Argument contain current row data item
+<div style="white-space:nowrap">data-attr="function(e){ ... }"</div> | custom attribute function (example: function(e) { if(e.ID==1) return {style:'color:red'} }). Argument contain current row data item
 data-select="true" | "select" checkbox
 data-field="..." | bound field name
 data-method="true" | custom content function defined inside of element (example: function(e) { return e.ID }). Argument contain current row data item
