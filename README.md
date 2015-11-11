@@ -3,7 +3,7 @@
 <b>JQuery grid</b>
 
 * Sorting (custom sorting field)
-* Scrolling (autowidth columns ability)
+* Scrolling (columns autowidth ability)
 * Selecting (single, multiple, checkbox)
 * Grouping (multiple headers and footers ability)
 * Aggregates (sum, count, min, max, avg, first, last, value)
@@ -93,3 +93,7 @@ data-attr="function(e){ ... }" | custom attribute function, returns html attribu
 data-aggregate="sum \| count \| min \| max \| avg \| first \| last \| value" | aggregate function (inner html is used as formatting pattern)
 data-field="..." | field name used in aggregate function
 data-method="true" | custom content function defined inside of element (example: function(e) { return e.count() }). Argument contain aggregate functions
+
+<b>Smarit.grid members</b>
+member | type | description
+--- | --- | ---
