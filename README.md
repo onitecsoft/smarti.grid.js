@@ -62,7 +62,7 @@ data-on-init="function(e){ ... }" | fires when grid is initilized<ul><li>e.sende
 data-on-load="function(e){ ... }" | fires when data is rendered<ul><li>e.sender - current grid js instance</li></ul>
 data-on-select="function(e){ ... }" | fires when user changes selection<ul><li>e.sender - current grid js instance</li><li>e.tr - jquery row object</li><li>e.selected - shows if current row is selected</li><li>e.item - current row data item</li></ul>
 
-<b>Header and footer (attributes apply to any inner element of \<tr\>):</b>
+<b>Header and footer (attributes apply to any inner element):</b>
 
 attribute name | description
 --- | ---
@@ -73,7 +73,7 @@ data-field="..." | field name used in aggregate function
 data-method="true" | custom content function defined inside of element (example: function(e) { return e.count() }). Argument contain aggregate functions
 data-select="true" | "select all" checkbox
 
-<b>Body template ((attributes apply to any inner element)</b>
+<b>Body template (attributes apply to any inner element):</b>
 
 | attribute name                   | description
 | -------------------------------- | -----------------------------------------
@@ -82,4 +82,10 @@ data-select="true" | "select all" checkbox
 | data-field="..."                 | bound field name
 | data-method="true"               | custom content function defined inside of element (example: function(e) { return e.ID }). Argument contain current row data item
 
-<b>Group header and footer templates</b>
+<b>Group header and footer templates (attributes apply to any inner element):</b>
+
+attribute name | description
+--- | ---
+data-group-header="0" | defines group header template at level=0
+data-group-field="..." | grouped by data field
+data-group-footer="0" | defines group footer template at level=0
