@@ -98,9 +98,11 @@ data-method="true" | custom content function defined inside of element (example:
 
 member | description
 --- | --- | ---
-init() | initializes grid (launch automatically on page load)
-load(data) | renders data into grid (argument is optional)
+init() | initialize grid (launch automatically on page load)
+load(data) | render data into grid (argument is optional)
 selectAll(true \| false) | select \| unselect all rows
-select(JqObject, toggle) | select rows corresponding to JqObject. If toggle==true, then toggles selection
-selectedItems() | returns array of items corresponding to selected rows
-sort(fieldName) | sorts grid by field name
+select(JqObject, toggle) | select rows corresponding to JqObject. If toggle==true, then toggle selection
+selectedItems() | return array of items corresponding to selected rows
+sort(fieldName) | sort grid by field name
+data | array of data
+selectClass | css class name of selected row
