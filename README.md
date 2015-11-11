@@ -77,7 +77,9 @@ data-select="true" | "select all" checkbox
 
 | attribute name                   | description
 | -------------------------------- | -----------------------------------------
-| data-attr="function(e){ ... }"   | custom attribute function (example: function(e) { if(e.ID==1) return {style:'color:red'} }). Argument contain current row data item
+| data-attr="function(e){ ... }"   | custom attribute function, returns html attributes in json format (example: function(e) { if(e.ID==1) return {style:'color:red'} }). Argument contain current row data item
 | data-select="true"               | "select" checkbox
 | data-field="..."                 | bound field name
 | data-method="true"               | custom content function defined inside of element (example: function(e) { return e.ID }). Argument contain current row data item
+
+<b>Group header and footer templates</b>
