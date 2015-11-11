@@ -10,7 +10,7 @@
 * Native configuration and templates (multirow ability)
 * Ability to apply custom layout, css style or theme
 * Custom html attributes dependent on data
-* Native javascript methods for custom content
+* Ability to render custom content by native javascript
 * Data formatting with smarti.to.js
 
 <b>Dependency:</b> <a href="https://github.com/onitecsoft/smarti.to.js">smarti.to.js</a>
@@ -79,7 +79,7 @@ data-select="true" | "select all" checkbox
 | -------------------------------- | -----------------------------------------
 | data-attr="function(e){ ... }"   | custom attribute function, returns html attributes in json format (example: function(e) { if(e.ID==1) return {style:'color:red'} }). Argument contain current row data item
 | data-select="true"               | "select" checkbox
-| data-field="..."                 | bound field name
+| data-field="..."                 | bound field name (inner html is used as formatting pattern)
 | data-method="true"               | custom content function defined inside of element (example: function(e) { return e.ID }). Argument contain current row data item
 
 <b>Group header and footer templates (attributes apply to any inner element):</b>
@@ -89,3 +89,7 @@ attribute name | description
 data-group-header="0" | defines group header template at level=0
 data-group-field="..." | grouped by data field
 data-group-footer="0" | defines group footer template at level=0
+data-attr="function(e){ ... }" | custom attribute function, returns html attributes in json format (example: function(e) { if(e.ID==1) return {style:'color:red'} }). Argument contain aggregate functions
+data-aggregate="sum \| count \| min \| max \| avg \| first \| last \| value" | aggregate function (inner html is used as formatting pattern)
+data-field="..." | field name used in aggregate function
+data-method="true" | custom content function defined inside of element (example: function(e) { return e.count() }). Argument contain aggregate functions
