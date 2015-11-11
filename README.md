@@ -94,11 +94,13 @@ data-aggregate="sum \| count \| min \| max \| avg \| first \| last \| value" | a
 data-field="..." | field name used in aggregate function
 data-method="true" | custom content function defined inside of element (example: function(e) { return e.count() }). Argument contain aggregate functions
 
-<b>Smarit.grid members</b>
+<b>Smarti.grid members</b>
 
 member | description
 --- | --- | ---
 init() | initializes grid (launch automatically on page load)
 load(data) | renders data into grid (argument is optional)
 selectAll(true \| false) | select \| unselect all rows
-select(jq, toggle) |
+select(JqObject, toggle) | select rows corresponding to JqObject. If toggle==true, then toggles selection
+selectedItems() | returns array of items corresponding to selected rows
+sort(fieldName) | sorts grid by field name
