@@ -106,3 +106,8 @@ selectedItems() | return array of items corresponding to selected rows
 sort(fieldName) | sort grid by field name
 data | array of data
 selectClass | css class name of selected row
+headerTemplate | JQuery object of header. Init() have to be called after editing
+footerTemplate | JQuery object of footer. Init() have to be called after editing
+rowTemplate | JQuery object of body template. Init() have to be called after editing
+groupHeaderTemplate | JQuery object of group header template. Init() have to be called after editing
+groupFooterTemplate | JQuery object of group footer template. Init() have to be called after editing
