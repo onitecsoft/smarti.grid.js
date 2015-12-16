@@ -34,7 +34,7 @@
       <tr data-group-footer="0"> - group footer template (level=0)
         ...
       </tr>
-      <tr ...>
+      <tr ...> - row template (can be multiple rows)
         <td ...>...</td>
         <td ...>...</td>
       </tr>
@@ -77,10 +77,10 @@ data-select="true" | "select all" checkbox
 
 | attribute name                   | description
 | -------------------------------- | -----------------------------------------
-| data-attr="function(e){ ... }"   | custom attribute function, returns html attributes in json format (example: function(e) { if(e.ID==1) return {style:'color:red'} }). Argument contain current row data item
+| data-attr="function(e){ ... }"   | custom attribute function, returns html attributes in json format (example: function(e) { if(e.ID==1) return {style:'color:red'} }). Argument represent current row data item
 | data-select="true"               | "select" checkbox (if applied to \<tr\> then selectable by rowclick)
 | data-field="..."                 | bound field name (inner html is used as formatting pattern)
-| data-method="true"               | custom content function defined inside of element (example: function(e) { return e.ID }). Argument contain current row data item
+| data-method="true"               | custom content function defined inside of element (example: function(e) { return e.ID }). Argument represent current row data item
 
 <b>Group header and footer templates (attributes apply to any inner element):</b>
 
