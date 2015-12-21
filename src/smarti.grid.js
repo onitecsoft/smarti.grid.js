@@ -4,15 +4,16 @@ $(function () {
 	if (!smarti.initialized) {
 		smarti.initialized = true;
 		$.each($('[data-smarti]'), function () {
-			var opts = $(this).data();
-			window[opts.name] = new smarti[opts['smarti']]($(this), opts);
+		    var jq = $(this);
+		    var opts = jq.data();
+		    window[opts.name] = new smarti[opts['smarti']](jq, opts);
 		});
 	}
 })
 
 smarti.ico = {
-	desc: '<svg width="6" height="6" fill="#888"><path d="M3,0 L6,6 L0,6 Z" /></svg>',
-	asc: '<svg width="6" height="6" fill="#888"><path d="M3,6 L0,0 L6,0 Z" /></svg>'
+	desc: '<svg width="6" height="6"><path d="M3,0 L6,6 L0,6 Z" /></svg>',
+	asc: '<svg width="6" height="6"><path d="M3,6 L0,0 L6,0 Z" /></svg>'
 }
 
 smarti.grid = function (jq, opts) {
@@ -31,6 +32,52 @@ smarti.grid = function (jq, opts) {
 	this.groupFooterTemplate = this.tbody.children('[data-group-footer]').remove();
 	this.rowTemplate = this.tbody.children().remove().attr('data-i', 'true');
 	this.footerTemplate = this.tfoot.children().remove();
+
+	that.tbody.on('click', '[data-s]', function (e) {
+	    if (that.selectable) {
+	        that.select($(this), that.selectable == 'multiple');
+	        e.stopPropagation();
+	    }
+	}).on('click', '[data-i]', function (e) {
+	    if (that.onClick != null) {
+	        var arg = { sender: that, tr: $(this) };
+	        arg.item = that.data[arg.tr.data('i')];
+	        that.onClick(arg);
+	        e.stopPropagation();
+	    }
+	}).on('click', '[data-e]', function (e) {
+		if (that.editable) {
+			/*var jq = $(this);
+			var j = jq.data('e');
+			var tr = jq.closest('tr');
+			var i = tr.data('i');
+			if (that._editor == null || that._editor.i != i || that._editor.j != j) {
+			    var edit = that._editors[j](that.data[i]);
+			    if (edit != null) {
+			        if (that._editor != null) that._editor.tr.replaceWith(that._body(that._editor.i, that.data[that._editor.i]));
+			        that._editor = { i: i, j: j, edit: edit, tr: tr };
+			        if (jq.css('position') != 'absolute') jq.css({ position: 'relative' });
+			        jq.html(edit.css({ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0 }));
+			        //
+			        //edit.css({ position: 'absolute', top: 0, left: 0 });
+			        /*.off('change').on('change', function () {
+                        $.proxy(that._savers[j], edit)(that.data[i]);
+                        tr.after(that._body(i, that.data[i])).remove();
+                        that._editing = false;
+                    })
+                    .off('blur').on('blur', function () { edit.remove(); that._editing = false; })
+                    .off('keydown').on('keydown', function (e) {
+                        if (e.keyCode == 27) { edit.remove(); that._editing = false; }
+                        if (e.keyCode == 9) {  }
+                    });
+			        //jq.append(edit);
+			        edit.focus();
+			        //that._editing = true;
+			    }
+			}
+			e.stopPropagation();*/
+		}
+	});
 
 	if (this.scrollable) {
 		var table = this.table.css({ margin: 0 }).clone().children().remove().end().css({ position: 'absolute', left: 0, width: 'auto' });
@@ -61,6 +108,8 @@ smarti.grid = function (jq, opts) {
 			that.table.prepend(that.thead.clone().css({ visibility: 'hidden' }).find('[id]').removeAttr('id').end());
 			that.table.append(that.tfoot.clone().css({ visibility: 'hidden' }).find('[id]').removeAttr('id').end());
 		}
+		that._editors = [];
+		that._savers = [];
 		that._body = that._template(that.rowTemplate);
 		that._ghead = [];
 		for (var i = 0; i < that.groupHeaderTemplate.length; i++) {
@@ -120,10 +169,6 @@ smarti.grid = function (jq, opts) {
 
 		//post processing
 		if (that.scrollable) that._fixScrollable();
-		that.tbody.off('click');
-		if (that.selectable) {
-			that.tbody.on('click', '[data-s]', function (e) { that.select($(this), that.selectable == 'multiple'); e.stopPropagation(); });
-		}
 		if (that.onLoad != null) that.onLoad({ sender: that });
 		if (that.onSelect != null) that.onSelect({ sender: that });
 	}
@@ -170,8 +215,8 @@ smarti.grid = function (jq, opts) {
 		a.last = function (f) { return data.length > 0 ? data[data.length - 1][f] : ''; }
 		a.count = function () { return data.length; }
 		a.sum = function (f) { var s = 0; $.each(data, function () { s += this[f] || 0; }); return s; }
-		a.min = function (f) { var arr = a._arr(f); that._sort(arr); return arr[0] || ''; }
-		a.max = function (f) { var arr = a._arr(f); that._sort(arr, 'desc'); return arr[0] || ''; }
+		a.min = function (f) { var arr = a._arr(f); that._sort(arr); return arr[0] != null ? arr[0] : ''; }
+		a.max = function (f) { var arr = a._arr(f); that._sort(arr, 'desc'); return arr[0] != null ? arr[0] : ''; }
 		a.avg = function (f) { var c = a.count(); return c > 0 ? a.sum(f) / c : 0; }
 		a._arr = function (f) { return $.map(data, function (v) { return v[f]; }); }
 		return a;
@@ -204,6 +249,11 @@ smarti.grid = function (jq, opts) {
 				var f = eval('(' + d.attr + ')');
 				p.push(function (v) { var a = ''; var b = f(v); for (var i in b) { a += i + '="' + b[i] + '"'; } return a; });
 				jq.attr('data-attr', p.length - 1);
+			}
+			if (d.edit != null) {
+				that._editors.push(eval('(' + d.edit + ')'));
+				that._savers.push(eval('(' + d.save + ')'));
+				jq.removeAttr('data-edit').attr('data-e', that._editors.length - 1);
 			}
 		}).end()[0].innerHTML.replace(/\r|\n|\t|data-attr="([0-9]+)"|'\+[^\+]+\+'|'/g, function (x, y) {
 			if (x == "'") return "\\'";
@@ -245,6 +295,7 @@ smarti.grid = function (jq, opts) {
 	this._eval('onSelect');
 	this._eval('onLoad');
 	this._eval('onInit');
+	this._eval('onClick');
 	this._eval('data');
 	this.init();
 	return this;
