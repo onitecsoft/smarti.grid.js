@@ -1,15 +1,19 @@
 var smarti = window['smarti'] || {};
 
 $(function () {
-	if (!smarti.initialized) {
-		smarti.initialized = true;
-		$.each($('[data-smarti]'), function () {
-		    var jq = $(this);
-		    var opts = jq.data();
-		    window[opts.name] = new smarti[opts['smarti']](jq, opts);
-		});
-	}
+    if (!smarti.initialized) {
+        smarti.initialized = true;
+        smarti.init();
+    }
 })
+
+smarti.init = function () {
+    $.each($('[data-smarti]'), function () {
+        var jq = $(this);
+        var opts = jq.data();
+        window[opts.name] = new smarti[opts['smarti']](jq, opts);
+    });
+}
 
 smarti.ico = {
 	desc: '<svg width="6" height="6"><path d="M3,0 L6,6 L0,6 Z" /></svg>',
