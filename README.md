@@ -90,7 +90,7 @@ attribute name | description
 data-group-header="0" | defines group header template at level=0
 data-group-field="..." | grouped by data field
 data-group-footer="0" | defines group footer template at level=0
-data-attr="function(e){ ... }" | custom attribute function, returns html attributes in json format (example: function(e) { if(e.count>10) return {style:'color:red'} }). Argument contain aggregate functions
+data-attr="function(e){ ... }" | custom attribute function, returns html attributes in json format (example: function(e) { if(e.count()>10) return {style:'color:red'} }). Argument contain aggregate functions
 data-aggregate="sum \| count \| min \| max \| avg \| first \| last \| value" | aggregate function (inner html is used as formatting pattern)
 data-field="..." | field name used in aggregate function
 data-method="true" | custom content function defined inside of element (example: function(e) { return e.count() }). Argument contain aggregate functions
