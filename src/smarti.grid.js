@@ -165,9 +165,11 @@ smarti.grid = function (jq, opts) {
 			else body += that._body(i, that.data[i]);
 		}
 		for (var i in groups) {
-			body += that._ghead[groups[i].level](groups[i].level, that.aggregate(groups[i].rows, groups[i].value));
-			body += groups[i].body;
-			body += that._gfoot[groups[i].level](groups[i].level, that.aggregate(groups[i].rows, groups[i].value));
+		    var gh = that._ghead[groups[i].level];
+		    var gf = that._gfoot[groups[i].level];
+		    if (gh != null) body += gh(groups[i].level, that.aggregate(groups[i].rows, groups[i].value));
+		    body += groups[i].body;
+		    if (gf != null) body += gf(groups[i].level, that.aggregate(groups[i].rows, groups[i].value));
 		}
 		that.tbody.html(body);
 
