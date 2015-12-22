@@ -215,7 +215,7 @@ smarti.grid = function (jq, opts) {
 		that.load();
 	}
 	this.aggregate = function (data, value) {
-		var a = this;
+		var a = {};
 		a.value = function () { return value; }
 		a.first = function (f) { return data.length > 0 ? data[0][f] : ''; }
 		a.last = function (f) { return data.length > 0 ? data[data.length - 1][f] : ''; }
