@@ -1,18 +1,18 @@
 var smarti = window['smarti'] || {};
 
 $(function () {
-    if (!smarti.initialized) {
-        smarti.initialized = true;
-        smarti.init();
-    }
+	if (!smarti.initialized) {
+		smarti.initialized = true;
+		$('[data-smarti]').smarti();
+	}
 })
 
-smarti.init = function () {
-    $.each($('[data-smarti]'), function () {
-        var jq = $(this);
-        var opts = jq.data();
-        window[opts.name] = new smarti[opts['smarti']](jq, opts);
-    });
+$.fn.smarti = function () {
+	$.each(this.selector == '[data-smarti]' ? this : this.find('[data-smarti]'), function () {
+		var jq = $(this);
+		var opts = jq.data();
+		window[opts.name] = new smarti[opts['smarti']](jq, opts);
+	});
 }
 
 smarti.ico = {
