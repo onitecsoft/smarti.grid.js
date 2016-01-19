@@ -62,7 +62,7 @@ data-data="..." | json data (plain json or js variable name)
 data-selectable="true \| false \| multiple" | defines if grid is selectable (default: false)
 data-select-class="..." | defines css class for selected row
 data-scrollable="true \| false" | defines if grid is scrollable (default: false)
-data-filters="{ name1: function(e){ ... }, name2: function(e){ ... } }" | initial filters represented as json object of key-value pairs<br/>function must return boolean result if it argument (data item) passed filtering
+data-filters="{ name1: function(e){ ... }, name2: function(e){ ... } }" | initial filters represented as json object of key-value pairs;<br/>function must return boolean result if its argument (data item) passed filtering;<br/>all filters are concatenated with `and` operator
 data-on-init="function(e){ ... }" | fires when grid is initilized<ul><li>e.sender - current grid js instance</li></ul>
 data-on-load="function(e){ ... }" | fires when data is rendered<ul><li>e.sender - current grid js instance</li></ul>
 data-on-select="function(e){ ... }" | fires when user changes selection<ul><li>e.sender - current grid js instance</li><li>e.tr - jquery row object</li><li>e.selected - shows if current row is selected</li><li>e.item - current row data item</li></ul>
@@ -110,6 +110,7 @@ selectAll(true \| false) | select \| unselect all rows
 select(JqObject, toggle) | select rows corresponding to JqObject. If toggle==true, then toggle selection
 selectedItems() | return array of items corresponding to selected rows
 sort(fieldName) | sort grid by field name
+filter({ name1: function(e){ ... }, name2: null }) | add new, update or clear existing filters (pass `null` to clear)
 data | array of data
 selectClass | css class name of selected row
 headerTemplate | JQuery object of header. Init() have to be called after editing
