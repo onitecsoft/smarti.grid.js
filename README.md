@@ -110,7 +110,7 @@ selectAll(true \| false) | select \| unselect all rows
 select(JqObject, toggle) | select rows corresponding to JqObject. If toggle==true, then toggle selection
 selectedItems() | return array of items corresponding to selected rows
 sort(fieldName) | sort grid by field name
-filter({ name1: function(e){ ... }, name2: null }) | add new, update or clear existing filters (pass `null` to clear)
+filter({ name1: function(e){ ... }, name2: null }) | add new, update or clear existing filters (pass `null` to clear), grid automatically reload
 data | array of data
 selectClass | css class name of selected row
 headerTemplate | JQuery object of header. Init() have to be called after editing
