@@ -24,6 +24,7 @@ smarti.grid = function (jq, opts) {
 	var that = this;
 	$.extend(that, opts);
 	this.data = this.data || [];
+	this.filters = this.filters || {};
 	this.selectClass = this.selectClass || 'selected';
 
 	this.container = jq.attr('id', this.name);
@@ -125,11 +126,18 @@ smarti.grid = function (jq, opts) {
 			var t = that.groupFooterTemplate.filter('[data-group-footer=' + i + ']');
 			if (t.length > 0) that._gfoot.push(that._template(t));
 		}
-		that.load();
+		this.filter();
 		if (that.onInit != null) that.onInit({ sender: that });
 	}
 	this.load = function (data) {
 		if (arguments.length > 0) that.data = data || [];
+
+		//filtering
+		var fdata = [];
+		if (that._filter != null) {
+			for (var i in that.data) if (that._filter(that.data[i])) fdata.push(that.data[i]);
+		}
+		else fdata = that.data;
 
 		//sorting
 		that.sorting = $.extend({}, that.grouping, that.sorting);
@@ -138,31 +146,31 @@ smarti.grid = function (jq, opts) {
 			var ico = $(smarti.ico[that.sorting[s]]).css({ position: 'absolute', left: 3, top: 3 }).attr('data-s', '');
 			that.thead.children().children('[data-sort-field=' + s + ']').append(ico);
 		}
-		that._sort(that.data, that.sorting);
+		that._sort(fdata, that.sorting);
 
 		//header and footer
 		var hf = that.scrollable ? that.table.children('thead,tfoot').find('[data-aggregate],[data-method]') : null;
 		that.thead.add(that.tfoot).find('[data-aggregate],[data-method]').each(function (k, v) {
 			var d = $(v).data();
-			if (d.aggregate != null) this.innerHTML = smarti.format(d.format, that.aggregate(that.data)[d.aggregate](d.field));
-			else if (d.method) this.innerHTML = d.method(that.aggregate(that.data));
+			if (d.aggregate != null) this.innerHTML = smarti.format(d.format, that.aggregate(fdata)[d.aggregate](d.field));
+			else if (d.method) this.innerHTML = d.method(that.aggregate(fdata));
 			if (hf != null && hf.length > 0) hf.eq(k)[0].innerHTML = this.innerHTML;
 		});
 
 		//body
 		var body = '';
 		var groups = {};
-		for (var i in that.data) {
+		for (var i in fdata) {
 			var a = null;
 			var k = 0;
 			for (var j in that.grouping) {
-				a = [k, that.data[i][j]];
-				if (groups[a] == null) groups[a] = { level: k, rows: [], body: '', value: that.data[i][j] };
-				groups[a].rows.push(that.data[i]);
+				a = [k, fdata[i][j]];
+				if (groups[a] == null) groups[a] = { level: k, rows: [], body: '', value: fdata[i][j] };
+				groups[a].rows.push(fdata[i]);
 				k++;
 			}
-			if (a != null) groups[a].body += that._body(i, that.data[i]);
-			else body += that._body(i, that.data[i]);
+			if (a != null) groups[a].body += that._body(i, fdata[i]);
+			else body += that._body(i, fdata[i]);
 		}
 		for (var i in groups) {
 		    var gh = that._ghead[groups[i].level];
@@ -215,7 +223,7 @@ smarti.grid = function (jq, opts) {
 		that.load();
 	}
 	this.aggregate = function (data, value) {
-		var a = {};
+	    var a = {};
 		a.value = function () { return value; }
 		a.first = function (f) { return data.length > 0 ? data[0][f] : ''; }
 		a.last = function (f) { return data.length > 0 ? data[data.length - 1][f] : ''; }
@@ -226,6 +234,14 @@ smarti.grid = function (jq, opts) {
 		a.avg = function (f) { var c = a.count(); return c > 0 ? a.sum(f) / c : 0; }
 		a._arr = function (f) { return $.map(data, function (v) { return v[f]; }); }
 		return a;
+	}
+	this.filter = function (filters) {
+		$.extend(that.filters, filters);
+		var f = [];
+		for (var i in that.filters) if (typeof that.filters[i] === 'function') f.push('that.filters["' + i + '"](v)');
+		that._filter = f.length > 0 ? 'function(v){return ' + f.join('&&') + '}' : null;
+		that._eval('_filter');
+		that.load();
 	}
 	this._template = function (template) {
 		var p = [];
@@ -303,6 +319,7 @@ smarti.grid = function (jq, opts) {
 	this._eval('onInit');
 	this._eval('onClick');
 	this._eval('data');
+	this._eval('filters');
 	this.init();
 	return this;
 }
