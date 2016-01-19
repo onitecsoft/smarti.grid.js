@@ -1,6 +1,6 @@
 # smarti.grid.js
 
-<b>Fluent JQuery grid with pure native configuration</b>
+<b>Fluent JQuery grid with pure html,css and javascript configuration</b>
 
 * Data binding with json
 * Sorting (custom sorting field)
