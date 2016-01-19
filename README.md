@@ -1,16 +1,18 @@
 # smarti.grid.js
 
-<b>JQuery grid</b>
+<b>Fluent JQuery grid with pure native configuration</b>
 
+* Data binding with json
 * Sorting (custom sorting field)
 * Scrolling (columns autowidth ability)
 * Selecting (single, multiple, checkbox)
+* Filtering (any filter in any place)
 * Grouping (multiple headers and footers ability)
 * Aggregates (sum, count, min, max, avg, first, last, value)
 * Native configuration and templates (multirow ability)
 * Ability to apply custom layout, css style or theme
-* Custom html attributes dependent on data
-* Ability to render custom content by native javascript
+* Dynamic html attributes dependent on data
+* Custom content generating by native javascript
 * Data formatting with smarti.to.js
 
 <b>Dependency:</b> <a href="https://github.com/onitecsoft/smarti.to.js">smarti.to.js</a>
@@ -60,6 +62,7 @@ data-data="..." | json data (plain json or js variable name)
 data-selectable="true \| false \| multiple" | defines if grid is selectable (default: false)
 data-select-class="..." | defines css class for selected row
 data-scrollable="true \| false" | defines if grid is scrollable (default: false)
+data-filters="{ name1: function(e){ ... }, name2: function(e){ ... } }" | initial filters represented as json object of key-value pairs<br/>function must return boolean result if it argument (data item) passed filtering
 data-on-init="function(e){ ... }" | fires when grid is initilized<ul><li>e.sender - current grid js instance</li></ul>
 data-on-load="function(e){ ... }" | fires when data is rendered<ul><li>e.sender - current grid js instance</li></ul>
 data-on-select="function(e){ ... }" | fires when user changes selection<ul><li>e.sender - current grid js instance</li><li>e.tr - jquery row object</li><li>e.selected - shows if current row is selected</li><li>e.item - current row data item</li></ul>
