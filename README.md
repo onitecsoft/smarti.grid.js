@@ -15,6 +15,8 @@
 * Custom content generating by native javascript
 * Data formatting with smarti.to.js
 
+Automatically initializes when page is loaded. If content was loaded within ajax request, call JQuery extension method `smarti()` on container: `$(container).smarti();`
+
 <b>Dependency:</b> <a href="https://github.com/onitecsoft/smarti.to.js">smarti.to.js</a>
 
 <b>Examples:</b> <a href="http://www.onitecsoft.com/smarti/grid">http://www.onitecsoft.com/smarti/grid</a>
