@@ -1,5 +1,4 @@
-# smarti.grid.js `Deprecated`
-will be replaced with smarti.list.js soon
+# smarti.grid.js `Deprecated`(smarti.list.js coming soon)
 
 <b>Fluent JQuery grid with pure html,css and javascript configuration</b>
 
