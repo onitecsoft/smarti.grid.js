@@ -19,10 +19,6 @@ Automatically initializes when page is loaded. If content was loaded within ajax
 
 <b>Dependency:</b> <a href="https://github.com/onitecsoft/smarti.to.js">smarti.to.js</a>
 
-<b>Examples:</b> <a href="http://www.onitecsoft.com/smarti/grid">http://www.onitecsoft.com/smarti/grid</a>
-
-<b>JSBin:</b> <a href="https://jsbin.com/tuxuvo/edit?html,output">https://jsbin.com/tuxuvo/edit?html,output</a>
-
 <b>Structure:</b>
 ```html
 <div ...> - container
